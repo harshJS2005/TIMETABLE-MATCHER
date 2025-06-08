@@ -6,47 +6,55 @@
   <title>Friends' Timetable Matcher</title>
   <style>
     body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 2rem;
-  background-color: #f0f4f8;
-  box-sizing: border-box;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 2rem;
-  overflow-x: auto;
-}
-
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-th {
-  background-color: #f3f3f3;
-}
-
-td.free {
-  background-color: #c8e6c9;
-}
-
-td.busy {
-  background-color: #ffcdd2;
-}
-
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f0f4f8;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f3f3f3;
+    }
+    td.free {
+      background-color: #c8e6c9;
+    }
+    td.busy {
+      background-color: #ffcdd2;
+    }
+    td.editable {
+      cursor: pointer;
+    }
+    .controls, .friend-list {
+      margin-bottom: 2rem;
+    }
+    .friend-list label {
+      margin-right: 1rem;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-left: 0.5rem;
+    }
+    /* Smooth transitions for editable cells */
 td.editable {
-  cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -55,37 +63,13 @@ td.editable:hover {
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
-.controls, .friend-list {
-  margin-bottom: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-input[type="text"], select {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  min-width: 200px;
-}
-
-input[type="text"]:focus, select:focus {
-  border-color: #1976d2;
-  box-shadow: 0 0 5px rgba(25, 118, 210, 0.4);
-}
-
+/* Button hover effect */
 button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   background-color: #1976d2;
   color: white;
   border: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
@@ -93,16 +77,19 @@ button:hover {
   transform: scale(1.05);
 }
 
-.friend-list label {
-  display: inline-block;
-  margin: 0.5rem 1rem 0.5rem 0;
-  transition: transform 0.2s ease;
+/* Input and select styles */
+input[type="text"], select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.friend-list label:hover {
-  transform: scale(1.05);
+input[type="text"]:focus, select:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 5px rgba(25, 118, 210, 0.4);
 }
 
+/* Fade-in animation for tables */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -114,45 +101,25 @@ button:hover {
   }
 }
 
-table, #scheduleEditor, #commonFreeTable {
+table {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Section transition */
+#scheduleEditor, #commonFreeTable {
   animation: fadeInUp 0.6s ease forwards;
   animation-delay: 0.2s;
 }
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  body {
-    padding: 1rem;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  table, th, td {
-    font-size: 0.75rem;
-  }
-
-  .controls, .friend-list {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  input[type="text"], select, button {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .friend-list label {
-    width: 100%;
-    text-align: left;
-  }
+/* Checkbox label hover */
+.friend-list label {
+  display: inline-block;
+  margin: 0.5rem 1rem 0.5rem 0;
+  transition: transform 0.2s ease;
 }
 
-@media (max-width: 480px) {
-  table, th, td {
-    font-size: 0.65rem;
-  }
+.friend-list label:hover {
+  transform: scale(1.05);
 }
 
   </style>
